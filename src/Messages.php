@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace  Mofeier\Messages;
 
-class  BaseMessage
+class  Messages
 {
     // public  array  $default_return  =  [
     //     'code'  =>  20000,
