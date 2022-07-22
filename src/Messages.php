@@ -91,7 +91,7 @@ class  Messages
     {
         $result  =  [
             'code'  =>  $this->getCode(),
-            'message'  =>  $this->getMessage(),
+            'message'  =>  iconv(iconv_get_encoding('input_encoding'), 'UTF-8', $this->getMessage()),
         ];
 
         if(isset($this->data)){
