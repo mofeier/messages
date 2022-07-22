@@ -1,0 +1,21 @@
+{
+    "name": "mofeier/messages",
+    "description": "这是一个消息状态的组件",
+    "keywords": ["php", "message", "code"],
+    "type": "library",
+    "license": "MulanPubL-2.0",
+    "authors": [
+    {
+        "name": "mofeier",
+        "email": "zyk96321@163.com"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Messages\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    }
+}
