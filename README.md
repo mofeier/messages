@@ -31,7 +31,7 @@ use  \Mofeier\Messages;
 40005   =>  '无此权限',
 */
 
-/**
+/*
  * 默认返回参数
  * code ： 状态码
  * message : 消息

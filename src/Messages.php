@@ -104,6 +104,6 @@ class  Messages
             $result['page'] =   $this->page;
             $result['max_page'] =   $this->max_page;
         }
-        return  json_encode($result, JSON_UNESCAPED_UNICODE);
+        return  json_encode($result, JSON_PRESERVE_ZERO_FRACTION + JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
     }
 }
