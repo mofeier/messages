@@ -43,7 +43,7 @@ class  Messages
     }
     private  function  getMessage()
     {
-        if($this->message){
+        if(isset($this->message)){
             return  $this->message;
         }
         $this->message();
@@ -56,7 +56,7 @@ class  Messages
     }
     private  function  getCode()
     {
-        if($this->code){
+        if(isset($this->code)){
             return  $this->code;
         }
         $this->code();
