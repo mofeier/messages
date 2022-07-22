@@ -43,10 +43,10 @@ class  Messages
     }
     private  function  getMessage()
     {
-        if(isset($this->message)){
-            return  $this->message;
+        if(!isset($this->message)){
+            $this->message();
         }
-        $this->message();
+        return  $this->message;
     }
     // 返回code
     public  function  code(int $code=20000)
@@ -56,10 +56,10 @@ class  Messages
     }
     private  function  getCode()
     {
-        if(isset($this->code)){
-            return  $this->code;
+        if(!isset($this->code)){
+            $this->code();
         }
-        $this->code();
+        return  $this->code;;
     }
     // 数据列表
     public  function  data(string|array  $data, array $other=NULL)
