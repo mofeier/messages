@@ -41,11 +41,25 @@ class  Messages
         $this->message  =   $message;
         return  $this;
     }
+    private  function  getMessage()
+    {
+        if($this->message){
+            return  $this->message;
+        }
+        $this->message();
+    }
     // 返回code
     public  function  code(int $code=20000)
     {
         $this->code  =  $code;
         return  $this;
+    }
+    private  function  getCode()
+    {
+        if($this->code){
+            return  $this->code;
+        }
+        $this->code();
     }
     // 数据列表
     public  function  data(string|array  $data, array $other=NULL)
@@ -76,9 +90,10 @@ class  Messages
     public  function  results()
     {
         $result  =  [
-            'code'  =>  isset($this->code)? $this->code:$this->code(),
-            'message'  =>  $this->message(),
+            'code'  =>  $this->getCode(),
+            'message'  =>  $this->getMessage(),
         ];
+
         if(isset($this->data)){
             $result['data'] =   $this->data;
         }
