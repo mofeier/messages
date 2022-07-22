@@ -104,6 +104,11 @@ class  Messages
             $result['page'] =   $this->page;
             $result['max_page'] =   $this->max_page;
         }
-        return  json_encode($result, JSON_PRESERVE_ZERO_FRACTION + JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        if(extension_loaded('swoole')){
+            return  $result;
+        }else{
+            header('Content-type:application/json;charset=utf-8');
+            return  json_encode($result, JSON_PRESERVE_ZERO_FRACTION + JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+        }
     }
 }
