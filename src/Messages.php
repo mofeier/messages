@@ -23,7 +23,7 @@ class  Messages
     private  function  getStatusCode(array $statusCode=NULL)
     {
         if(is_null($statusCode)){
-            return  require_once('./StatusCode.php');
+            return  require_once('StatusCode.php');
         }
         return  $statusCode;
     }
