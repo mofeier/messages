@@ -1,4 +1,4 @@
-这是一个消息状态的组件，不想每次都去单独写消息组件
+这是一个返回消息状态的组件！
 
 ## composer安装
 composer  require  mofeier/messages
@@ -9,7 +9,8 @@ composer  require  mofeier/messages
 use  \Mofeier\Messages;
 
 ……省略头部
-// 使用默认返回状态值，也可以写自己的返回状态码，返回json数据
+// 使用默认返回状态值，也可以写自己的返回状态码，默认返回json数据，适合swoole相关框架和传统PHP。
+// 乱码问题：根据自使用框架调整。 swoole相关框架，返回为array
 /*
  20000   =>  'OK',
 // 账号操作相关
