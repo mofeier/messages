@@ -27,6 +27,11 @@ class  Messages
         }
         return  $statusCode;
     }
+    // 设置自己的代码映射数组
+    public  function  setStatusCode(array  $statusCode)
+    {
+        return  $this->getStatusCode($statusCode);
+    }
     // 返回消息
     public  function  message(string $message=NULL)
     {
@@ -35,7 +40,7 @@ class  Messages
             if(is_null($this->code)){
                 $this->code  =  20000;
             }
-            $this->message  =  isset($statusCode[$this->code])? $statusCode[$this->code]:'OK';
+            $this->message  =  isset($statusCode[$this->code])? $statusCode[$this->code]:'响应消息';
             return  $this;
         }
         $this->message  =   $message;
@@ -105,8 +110,10 @@ class  Messages
             $result['max_page'] =   $this->max_page;
         }
         if(extension_loaded('swoole')){
+            // var_dump('-swoole-');
             return  $result;
         }else{
+            // var_dump('-no-');
             header('Content-type:application/json;charset=utf-8');
             return  json_encode($result, JSON_PRESERVE_ZERO_FRACTION + JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
         }

@@ -1,7 +1,7 @@
 {
-    "name": "mofeier/messages",
+    "name": "mofei/messages",
     "description": "这是一个消息状态的组件",
-    "keywords": ["php", "message", "code"],
+    "keywords": ["php", "messages", "code"],
     "type": "library",
     "license": "MulanPSL-2.0",
     "authors": [
