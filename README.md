@@ -6,9 +6,9 @@ composer  require  mofeier/messages
 ## 使用
 
 ```php
-use  \Mofeier\Messages;
+use  Mofeier\Messages;
 
-……省略头部
+// ……其他代码
 // 使用默认返回状态值，也可以写自己的返回状态码，默认返回json数据，适合swoole相关框架和传统PHP。适合PHP5以上。
 // 乱码问题：根据自使用框架调整。 swoole相关框架，返回为array
 /*
