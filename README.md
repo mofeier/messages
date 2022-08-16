@@ -46,6 +46,9 @@ $result  =  new  Messages;
 // 默认返回 20000
 $result->results();
 
+// 设置自己状态码，$array 参数为数组
+$result->setStatusCode($array);
+
 // 使用状态码, 请设置默认消息值
 $result->code(400)->results();
 

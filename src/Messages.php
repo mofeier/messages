@@ -20,7 +20,7 @@ class  Messages
     // {
     //     $this->default_return  =   $result;
     // }
-    private  function  getStatusCode(array $statusCode=NULL)
+    public  function  getStatusCode(array $statusCode=NULL)
     {
         if(is_null($statusCode)){
             return  require_once('StatusCode.php');
