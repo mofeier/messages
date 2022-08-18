@@ -1,6 +1,6 @@
 {
-    "name": "mofei/messages",
-    "description": "这是一个消息状态的组件",
+    "name": "mofeier/messages",
+    "description": "这是一个返回消息状态的组件",
     "keywords": ["php", "messages", "code"],
     "type": "library",
     "license": "MulanPSL-2.0",
@@ -16,6 +16,6 @@
         }
     },
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.0"
     }
 }

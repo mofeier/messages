@@ -8,10 +8,17 @@ composer  require  mofeier/messages
 ```php
 use  Mofeier\Messages;
 
+/**
+ * 1、状态码可追加，可使用默认和自定义。
+ * 2、返回数据多格式：json，array，默认array
+ * 3、参数命名可指定，可追加参数
+ * 4、返回参数自定义
+ */
+
 // ……其他代码
-// 使用默认返回状态值，也可以写自己的返回状态码，默认返回json数据，适合swoole相关框架和传统PHP。适合PHP5以上。
-// 乱码问题：根据自使用框架调整。 swoole相关框架，返回为array
-/*
+// 使用默认返回状态值，也可以写自己的返回状态码，适合PHP5以上。
+// 乱码问题：根据自使用框架调整。
+/* 默认状态码，在StatusCode
  20000   =>  'OK',
 // 账号操作相关
 20001   =>  '账号有误',
@@ -35,34 +42,57 @@ use  Mofeier\Messages;
 /*
  * 默认返回参数
  * code ： 状态码
- * message : 消息
- * 其他有数据时设置即可
- * data ： 字符或数组
- * count ：数据总数量，做接口需要总数量分页使用
- * page ： 当前页码
- * max_page ： 最大页码，可以不写，默认跟page一样
+ * msg : 消息
+ * 其他有数据自行设置
 */
+### 1.消息体
 $result  =  new  Messages;
-// 默认返回 20000
-$result->results();
+// 默认返回 array
+$result->result();
+// 返回json，json($cn=false)，默认原json格式，中文会转义；cn=true时，转义中文，如框架自带json，可能会出现乱码，请使用result。
+$result->json();
+// 可设置默认消息文字，默认为：请设置消息语
+$result->defMsg('默认消息');
 
-// 设置自己状态码，$array 参数为数组
-$result->setStatusCode($array);
+### 2. 可自定义字段名
+// 默认属性为 code，msg。自定义代码号和消息语，其他根据自设置字段增加。
+$result->code(2022)->result();
+$result->code(2022)->msg('错误')->result();
 
-// 使用状态码, 请设置默认消息值
-$result->code(400)->results();
+### 3. 自定义:count,page,limit,data,都是自定义参数，会根据定义名称输出。也可以定义为其他名称
+$result->code(2022)->msg('错误')->count(20)->page(1)->limit(5)->data($array)->result();
 
-// 使用状态码和消息
-$result->code(400)->message('操作失败')->results();
+### 4. 替换字段名：replace ，可提前设置，可以链式追加，只有相同字段才能替换。
+$result->code(2022)->msg('错误')->replace($array)->result();
+// 也可提前设置
+$result->replace($array);
+$result->code(2022)->msg('错误')->result();
 
-// 使用data
-$result->data($data);
+### 5. 状态码使用
+// 1. 获取状态映射
+(new StatusCode)->getCode();
+// 2. 默认code
+(new StatusCode)->getDefCode();
+// 3. 自定义code映射
+(new StatusCode)->setCode($array);
+// 3. 自定义code 和默认合并
+(new StatusCode)->merge(true)->setCode($array);
 
-// 使用总数量 $count = 100
-$result->count($count);
-
-// 使用页码, page($page 当前页，max_page 最大页码)
-$result->page(1, 5);
-
-// 综合使用
-$result->code(400)->message('操作失败')->data($data)->count(200)->page(1)->results();
+## 实现
+// 映射码
+$codes  =   [
+    200 =>  'Success',
+    201 =>  'Error',
+    202 =>  'Action',
+];
+// 替换字段名
+$datas  =  [
+    'code'  =>  'codes',
+    'msg'  =>  'mesg',
+    'limit'  =>  'page_num',
+];
+// 设置自定义状态码
+// $status =   $this->statusCode->setCode($codes);
+// 替换数据
+$this->messages->replace($datas);
+$this->messages->code(2022)->msg('我是好人')->limit(15)->page(1)->count(100)->result();
