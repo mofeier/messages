@@ -67,9 +67,6 @@ class  Messages
         if(isset($this->msg)){
             $this->data['msg']  =   $this->msg;
         }
-        if(isset($this->set_replace)){
-            $this->replace_key($this->set_replace);
-        }
         if (isset($this->replace)) {
             $this->replace_key($this->replace);
         }
